@@ -32,7 +32,7 @@
           {% if block.settings.image_1 != blank or block.settings.image_2 != blank %}
             <div class="rich-text-with-media__images images-{{ image_count }}">
               {%- style -%}
-                .media-height {
+                .media-height-{{ section.id }} {
                   {% if section.settings.mobile_height == 'adapt' and block.settings.image_1 != blank %}
                     height: 0px;
                     padding-bottom: {{ 1 | divided_by: block.settings.image_1.aspect_ratio | times: 100 }}%;
@@ -42,7 +42,7 @@
                 }
               
                 @media screen and (min-width: 990px) {
-                  .media-height {
+                  .media-height-{{ section.id }} {
                     {% if section.settings.desktop_height == 'adapt' and block.settings.image_1 != blank %}
                       height: 0px;
                       padding-bottom: {{ 1 | divided_by: block.settings.image_1.aspect_ratio | times: 100 }}%;
@@ -54,7 +54,7 @@
                 }
               {%- endstyle -%}
               {% if block.settings.image_1 != blank %}
-                <div class="rich-text-with-media__media first-image media-height">
+                <div class="rich-text-with-media__media first-image media-height-{{ section.id }}">
                   {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
                   {%- capture sizes -%}
                         (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: image_count }}px,
@@ -72,7 +72,7 @@
                 </div> 
               {% endif %}
               {% if block.settings.image_2 != blank %}
-                <div class="rich-text-with-media__media second-image media-height">
+                <div class="rich-text-with-media__media second-image media-height-{{ section.id }}">
                   {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
                   {%- capture sizes -%}
                         (min-width: {{ settings.page_width }}px) {{ settings.page_width | plus: 100 | divided_by: image_count }}px,
@@ -124,26 +124,6 @@
       ],
       "default": "center",
       "label": "Content alignment"
-    },
-    {
-      "type": "select",
-      "id": "page_width",
-      "options": [
-        {
-          "value": "default",
-          "label": "Default"
-        },
-        {
-          "value": "page_width",
-          "label": "Page width"
-        },
-        {
-          "value": "full_width",
-          "label": "Full width"
-        }
-      ],
-      "default": "default",
-      "label": "Section width"
     },
     {
       "type": "color_scheme",
