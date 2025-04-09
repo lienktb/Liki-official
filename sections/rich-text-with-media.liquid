@@ -12,7 +12,7 @@
     }
   }
 {%- endstyle -%}
-<div class="rich-text-with-media page-width" style="--media-radius: 16px">
+<div class="rich-text-with-media page-width section-{{ section.id }}-padding" style="--media-radius: 16px">
   <div class="rich-text-with-media__container text-{{ section.settings.content_alignment }}">
     {%- for block in section.blocks -%}
       {% case block.type %}
@@ -202,7 +202,7 @@
             }
           ],
           "default": "adapt",
-          "label": "Desktop height"
+          "label": "Mobile height"
         }
       ]
     },
@@ -227,7 +227,7 @@
             },
             {
               "value": "medium",
-              "label": "medium"
+              "label": "Medium"
             },
             {
               "value": "large",
