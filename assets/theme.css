@@ -5,7 +5,7 @@
     font-size: calc(var(--font-heading-scale) * 3.2rem);
   }
   .heading-small {
-    font-size: calc(var(--font-heading-scale) * 2rem);
+    font-size: calc(var(--font-heading-scale) * 3.2rem);
   }
 
 @media only screen and (min-width: 750px) {
@@ -16,6 +16,6 @@
       font-size: calc(var(--font-heading-scale) * 5.4rem);
     }
     .heading-small {
-      font-size: calc(var(--font-heading-scale) * 2.5rem);
+      font-size: calc(var(--font-heading-scale) * 4rem);
     }
   }
