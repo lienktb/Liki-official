@@ -95,7 +95,7 @@
       {% endfor %}
 
       {{ scheme_classes | prepend: 'body' }} {
-        color: rgba(var(--color-foreground), 0.75);
+        color: rgba(var(--color-foreground));
         background-color: rgb(var(--color-background));
       }
 
@@ -115,7 +115,7 @@
         --media-padding: {{ settings.media_padding }}px;
         --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
         --media-border-width: {{ settings.media_border_thickness }}px;
-        --media-radius: {{ settings.media_radius }}px;
+        --media-radius: {{ settings.media_radius | times: 0.65 }}px;
         --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
         --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
         --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
@@ -241,8 +241,7 @@
         min-height: 100%;
         margin: 0;
         font-size: 1.5rem;
-        letter-spacing: 0.06rem;
-        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        line-height: calc(1 + 0.5 / var(--font-body-scale));
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
@@ -251,6 +250,9 @@
       @media screen and (min-width: 750px) {
         body {
           font-size: 1.6rem;
+        }
+        :root {
+          --media-radius: {{ settings.media_radius }}px;
         }
       }
     {% endstyle %}

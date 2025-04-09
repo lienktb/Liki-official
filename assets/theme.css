@@ -1,21 +1,35 @@
+.page-width {
+  max-width: calc(var(--page-width) + 40px);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
 .heading-large {
-    font-size: calc(var(--font-heading-scale) * 3.2rem);
-  }
-  .heading-medium {
-    font-size: calc(var(--font-heading-scale) * 3.2rem);
-  }
-  .heading-small {
-    font-size: calc(var(--font-heading-scale) * 3.2rem);
-  }
+  font-size: calc(var(--font-heading-scale) * 3.2rem);
+  line-height: 1.3;
+}
+.heading-medium {
+  font-size: calc(var(--font-heading-scale) * 3.2rem);
+  line-height: 1.3;
+}
+.heading-small {
+  font-size: calc(var(--font-heading-scale) * 3.2rem);
+  line-height: 1.3;
+}
 
 @media only screen and (min-width: 750px) {
+    .page-width {
+      padding: 0 3.2rem;
+    }
     .heading-large {
       font-size: calc(var(--font-heading-scale) * 6.4rem);
+      line-height: 1.15;
     }
     .heading-medium {
       font-size: calc(var(--font-heading-scale) * 5.4rem);
     }
     .heading-small {
       font-size: calc(var(--font-heading-scale) * 4rem);
+      line-height: 1.35;
     }
   }

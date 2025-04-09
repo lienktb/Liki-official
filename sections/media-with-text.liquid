@@ -5,7 +5,7 @@
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
   }
-  .media-height {
+  .media-height-{{ section.id }} {
     {% if section.settings.mobile_height == 'adapt' and section.settings.image != blank %}
       height: 0px;
       padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
@@ -19,7 +19,7 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-    .media-height {
+    .media-height-{{ section.id }} {
       {% if section.settings.desktop_height == 'adapt' and section.settings.image != blank %}
         height: 0px;
         padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
@@ -33,13 +33,13 @@
 
 <div class="media-with-text page-width section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
   <div class="media-with-text__container media-mobile-{{ section.settings.image_mobile_position }} media-desktop-{{ section.settings.image_desktop_position }}">
-    <div class="media-with-text__media media-height">
+    <div class="media-with-text__media media-height-{{ section.id }}">
       <div>
         {% if section.settings.image != blank %}
           {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
           {%- capture sizes -%}
-                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                (min-width: {{ settings.page_width }}px) {{ settings.page_width | plus: 100 | divided_by: 2 }}px,
+                (min-width: 750px) calc((100vw + 130px) / 2), calc((100vw + 50px) / 2)
               {%- endcapture -%}
           {{
             section.settings.image
